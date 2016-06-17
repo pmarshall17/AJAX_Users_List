@@ -34,7 +34,7 @@ $(document).ready( function() {
 
     $(document).on('click', '.delete', function() {
       var id = $(this).closest('tr').data().id;
-      deleteuser(id);
+      deleteUser(id);
     });
 
     $(document).on('click', '.show', function() {
@@ -64,25 +64,27 @@ $(document).ready( function() {
     }).done( function(data) {
       var user = data.user;
       panel.children('#heading').html(user.name);
-      var list = $('#user');
-      var price = '<li>Price: $' + user.base_price + '</li>';
-      var desc = '<li>Description: ' + user.description + '</li>';
-      list.append(price);
-      list.append(desc);
+      var contact_info = $('#user');
+      var first_name = '<li>first_name: ' + contact_info.first_name + '</li>';
+      var last_name = '<li>last_name: ' + contact_info.last_name + '</li>';
+      var phone_number = '<li>phone_number: ' + contact_info.phone_number + '</li>';
+      contact_info.append(first_name);
+      contact_info.append(last_name);
+      contact_info.append(phone_number);
     })
   }
 
-//   $('#new_user').on('submit', function(e) {
-//     e.preventDefault();
-//     $.ajax({x
-//       url: baseUrl,
-//       type: 'POST',
-//       dataType: 'JSON',
-//       data: $(this).serializeArray()
-//     }).done( function() {
-//       location.pathname = '/';
-//     });
-//   })
+  $('#new_user').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: baseUrl,
+      type: 'POST',
+      dataType: 'JSON',
+      data: $(this).serializeArray()
+    }).done( function() {
+      location.pathname = '/';
+    });
+  })
 
 })
 
