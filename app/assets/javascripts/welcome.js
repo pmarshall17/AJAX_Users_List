@@ -34,12 +34,12 @@ $(document).ready( function() {
 
     $(document).on('click', '.delete', function() {
       var id = $(this).closest('tr').data().id;
-      deleteUser(id);
+      deleteuser(id);
     });
 
     $(document).on('click', '.show', function() {
       var id = $(this).closest('tr').data().id;
-      location.pathname = '/users/' + id;
+      location.pathname = '/welcome/' + id;
     })
 
     function deleteUsers(id) {
@@ -53,7 +53,7 @@ $(document).ready( function() {
     }
   } //root route
 
-  var re = /\/users\/\d+/;
+  var re = /\/welcome\/\d+/;
   if (location.pathname.match(re)) {
     var panel = $('#panel');
     var id = panel.data().id;
@@ -65,9 +65,9 @@ $(document).ready( function() {
       var user = data.user;
       panel.children('#heading').html(user.name);
       var contact_info = $('#user');
-      var first_name = '<li>first_name: ' + contact_info.first_name + '</li>';
-      var last_name = '<li>last_name: ' + contact_info.last_name + '</li>';
-      var phone_number = '<li>phone_number: ' + contact_info.phone_number + '</li>';
+      var first_name = '<li>first_name: ' + user.first_name + '</li>';
+      var last_name = '<li>last_name: ' + user.last_name + '</li>';
+      var phone_number = '<li>phone_number: ' + user.phone_number + '</li>';
       contact_info.append(first_name);
       contact_info.append(last_name);
       contact_info.append(phone_number);
